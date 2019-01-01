@@ -1,0 +1,21 @@
+{
+	"name": "agik/datatables-laravel-lumen",
+	"description": "datatables for laravel-lumen",
+	"type": "library",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "agik-setiawan",
+			"email": "setiawanagik@gmail.com"
+		}
+	],
+	"homepage": "https://github.com/agik-setiawan/datatables-laravel-lumen",
+	"autoload": {
+		"psr-4": {
+			"Datatable\\": "src/"
+		}
+	},
+	"require":{
+		"php": ">=7.0"
+	}
+}
