@@ -15,7 +15,7 @@ class DataTableServiceProvider extends ServiceProvider
     {
          $this->app->bind('datatable', function()
         {
-            return new \DataTable\DataTable;
+            return new \Datatable\DataTable;
         });
     }
 }
