@@ -45,15 +45,19 @@ class DataTable
 				$col=$value;
 				if($columns_select){
 					foreach ($columns_select as $key_select => $value_select) {
-					
-					if(preg_match("/(as)/", $value_select)){
-						$split_alias=explode("as", $value_select);
-						$col=$split_alias[0];
-						if($and){
-							$sql.=" $and $col LIKE '".$request['search']['value']."%' "; 
+						
+						if(preg_match("/(as)/", $value_select)){
+							$split_alias=explode("as", $value_select);
+							$col=$split_alias[0];
+							if($and){
+								$sql.=" $and $col LIKE '".$request['search']['value']."%' "; 
+							}
+						}else{
+							if($and){
+								$sql.=" $and $value_select LIKE '".$request['search']['value']."%' "; 
+							}
 						}
 					}
-				}
 				}
 
 				if($and){
@@ -86,5 +90,6 @@ class DataTable
 		$datas["data"]=$mdl->get()->toArray();
 		return response()->json($datas);
 	}
+
 
 }
