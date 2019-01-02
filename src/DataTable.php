@@ -45,14 +45,23 @@ class DataTable
 				$col=$value;
 				if($columns_select){
 					foreach ($columns_select as $key_select => $value_select) {
-
-						if(preg_match("/(as)/", $value_select)){
-							$split_alias=explode("as", $value_select);
-							$col=$split_alias[0];
+					
+					if(preg_match("/(as)/", $value_select)){
+						$split_alias=explode("as", $value_select);
+						$col=$split_alias[0];
+						if($and){
+							$sql.=" $and $col LIKE '".$request['search']['value']."%' "; 
 						}
 					}
 				}
-				$sql.=" $and $col LIKE '".$request['search']['value']."%' "; 
+				}
+
+				if($and){
+					$sql.=" $and $col LIKE '".$request['search']['value']."%' "; 
+				}else{
+					$sql.=" $col LIKE '".$request['search']['value']."%' "; 
+				}
+				
 			}
 			$mdl->whereRaw($sql);
 		}
